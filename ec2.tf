@@ -19,6 +19,24 @@ resource "aws_instance" "tf_ec2_instance" {
   )
 }
 
+resource "aws_instance" "tf_ec2_manage" {
+  count                       = var.manage_count
+  ami                         = var.ec2_ami
+  instance_type               = var.ec2_instance_type
+  associate_public_ip_address = false
+  key_name                    = var.ec2_key_name
+
+  vpc_security_group_ids = [aws_security_group.tf_ec2_sg.id]
+
+  tags = merge (
+    local.common_tags,
+    {
+      Name = "server-${count.index + 1}"
+      Usage = "To run client/manage server"
+    }
+  )
+}
+
 resource "aws_security_group" "tf_ec2_sg" {
   name        = "Ansible-server-sg"
   description = "Allow SSH traffic"

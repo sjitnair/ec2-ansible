@@ -29,6 +29,11 @@ variable "vpc_id" {
   default     = "vpc-02a3046e80968cf34"
 }
 
+variable "manage_count" {
+  description = "No# of manage nodes"
+  type        = number
+  default     = 1
+}
 
 # -----------------
 # EC2
