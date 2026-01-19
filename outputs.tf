@@ -4,7 +4,7 @@ output "Controlserver_putty_login" {
 
 output "Manage_putty_login" {
   value = [
-    for ip in aws_instance.tf_ec2_manage[*].public_ip :
+    for ip in aws_instance.tf_ec2_manage[*].private_ip :
     "ubuntu@${ip}"
   ]
 }
