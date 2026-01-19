@@ -28,7 +28,7 @@ resource "aws_instance" "tf_ec2_manage" {
 
   vpc_security_group_ids = [aws_security_group.tf_ec2_sg.id]
 
-  user_data = file("./clinet.sh")
+  user_data = file("./client.sh")
 
   tags = merge (
     local.common_tags,
