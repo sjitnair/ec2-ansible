@@ -6,6 +6,7 @@ echo "########Installing Python3 and pip########"
 sudo apt update
 sudo apt install python3 --yes
 sudo apt install pip --yes
+sudo apt install -y python3-boto3
 
 echo "########Installing Ansible########"
 sudo apt update
@@ -15,6 +16,7 @@ sudo apt install ansible --yes
 echo "########Installation done########"
 sudo echo "[defaults]" >>/etc/ansible/ansible.cfg
 sudo echo "host_key_checking = False" >>/etc/ansible/ansible.cfg
+sudo ansible-galaxy collection install amazon.aws --force
 FFE
 
 
